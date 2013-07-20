@@ -1,5 +1,5 @@
 #define aref_voltage 3.3         // we tie 3.3V to ARef and measure it with a multimeter!
-#define SENSOR_READ_TIMEOUT 3000 //milliseconds period for reading sensors in loop 
+#define SENSOR_READ_TIMEOUT 5000 //milliseconds period for reading sensors in loop 
  
  
  
@@ -42,7 +42,7 @@ void loop(void) {
  
   // now convert to Fahrenheight
   float temperatureF = (temperatureC * 9.0 / 5.0) + 32.0;
-  Serial.print("F"); Serial.println(temperatureF);
+  Serial.print("Fa"); Serial.println(temperatureF);
   sensorPrevTime = millis();
   }
 }
