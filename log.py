@@ -37,9 +37,18 @@ def serial_com():
     serial_port.close()   
     return lines
 
-msg = serial_com()    
+# Hold our function as an object
+#
+#['V0.80', 'C29.60', 'Fa85.28']
+#
+msg = serial_com()
+# Assign 
+voltage = msg[0]
+cel = msg[1]
+fa = msg[2]
 print(msg)
-print('Voltage: ', msg[0])
-print('Celsius: ', msg[1])
-print('fahrenheit: ', msg[2])
-print(timestamp)
+
+print('Voltage: ', voltage[-4:]) # Print last 4 chars, x.xx
+print('Celsius: ', cel[-5:]) # Print last 5 chars, xx.xx
+print('fahrenheit: ', fa[-5:]) # Print last 5 chars, xx.xx
+print('Unix Timestamp:', timestamp)
