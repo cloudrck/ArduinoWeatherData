@@ -50,5 +50,5 @@ temperature = msg[1]
 print(msg)
 
 print('Humidity: ', humidity[-5:]) # Print last 5 chars, xx.xx
-print('fahrenheit: ', temperature[-5:]) # Print last 5 chars, xx.xx
+print('Fahrenheit: ', temperature[-5:]) # Print last 5 chars, xx.xx
 print('Unix Timestamp:', timestamp)

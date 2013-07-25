@@ -20,9 +20,10 @@ void setup() {
 
 void loop() {
   float h = dht.readHumidity();
+  //F = fahrenheit; C = Celsius; Default = C
   float t = dht.readTemperature('F');
 
-  // check if returns are valid, if they are NaN (not a number) then something went wrong!
+  // check if returns are valid, if they are NaN 
   if (isnan(t) || isnan(h)) {
     Serial.println("Failed to read from DHT");
   } else {
