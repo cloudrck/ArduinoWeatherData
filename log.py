@@ -16,7 +16,8 @@ def serial_com():
 
     # open serial port
     try:
-        serial_port = serial.Serial(port = '/dev/ttyACM0', baudrate = 9600, writeTimeout = None)
+        #serial_port = serial.Serial(port = '/dev/ttyACM0', baudrate = 9600, writeTimeout = None)
+        serial_port = serial.Serial(port = '/dev/ttyACM0', baudrate = 9600)
     except serial.SerialException as e:
         print("could not open serial port '{}': {}".format(com_port, e))
 
@@ -43,12 +44,11 @@ def serial_com():
 #
 msg = serial_com()
 # Assign 
-voltage = msg[0]
-cel = msg[1]
-fa = msg[2]
+humidity = msg[0]
+temperature = msg[1]
+
 print(msg)
 
-print('Voltage: ', voltage[-4:]) # Print last 4 chars, x.xx
-print('Celsius: ', cel[-5:]) # Print last 5 chars, xx.xx
-print('fahrenheit: ', fa[-5:]) # Print last 5 chars, xx.xx
+print('Humidity: ', humidity[-5:]) # Print last 5 chars, xx.xx
+print('fahrenheit: ', temperature[-5:]) # Print last 5 chars, xx.xx
 print('Unix Timestamp:', timestamp)
