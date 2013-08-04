@@ -3,6 +3,8 @@ import calendar
 import time
 from datetime import datetime
 
+com_port = '/dev/ttyACM0'
+baud_rate = 9600
 # Set some UTC time
 d = datetime.utcnow()
 timestamp=calendar.timegm(d.utctimetuple())
@@ -17,7 +19,7 @@ def serial_com():
     # open serial port
     try:
         #serial_port = serial.Serial(port = '/dev/ttyACM0', baudrate = 9600, writeTimeout = None)
-        serial_port = serial.Serial(port = '/dev/ttyACM0', baudrate = 9600)
+        serial_port = serial.Serial(com_port, baud_rate)
     except serial.SerialException as e:
         print("could not open serial port '{}': {}".format(com_port, e))
 
