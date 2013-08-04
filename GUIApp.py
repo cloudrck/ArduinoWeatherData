@@ -16,46 +16,44 @@ class MyScript():
     #global textarea
     
     def __init__(self):
-    	global textbuffer
-    	
-  	textbuffer = textarea.get_buffer()
-  	#msg = self.serial_com()
-    	print('init')
-    	
+        global textbuffer
+        textbuffer = textarea.get_buffer()
+        #msg = self.serial_com()
+        print('init')
+        
     def closeDown(self, *args):
-    	gtk.main_quit(*args)
-    	
+        gtk.main_quit(*args)
+        
 
     def printview(self, button):
-    	#textbuffer = textarea.get_buffer()
-    	msg = self.serial_com()
-    	# Assign 
-    	humidity = msg[0]
-    	temperature = msg[1]
-    	d = datetime.utcnow()
-    	timestamp=calendar.timegm(d.utctimetuple())
-    	textbuffer.set_text("Humidity:\t" + humidity[-5:] +"%\n")
-    	textbuffer.insert(textbuffer.get_end_iter(), 'Temperature:\t' + temperature[-5:]+"F\n")
-    	textbuffer.insert(textbuffer.get_end_iter(), "Unix Timestamp:\t"+ str(timestamp))
-    	print('released')
-    	
+        #textbuffer = textarea.get_buffer()
+        msg = self.serial_com()
+        # Assign 
+        humidity = msg[0]
+        temperature = msg[1]
+        d = datetime.utcnow()
+        timestamp=calendar.timegm(d.utctimetuple())
+        textbuffer.set_text("Humidity:\t" + humidity[-5:] +"%\n")
+        textbuffer.insert(textbuffer.get_end_iter(), 'Temperature:\t' + temperature[-5:]+"F\n")
+        textbuffer.insert(textbuffer.get_end_iter(), "Unix Timestamp:\t"+ str(timestamp))
+        print('released')
+        
     def delety(self, button):
-    	#textbuffer.delete(textbuffer.get_start_iter(), textbuffer.get_end_iter())
-    	textbuffer.set_text('')
-    	print('Pressed to Delete')
+        #textbuffer.delete(textbuffer.get_start_iter(), textbuffer.get_end_iter())
+        textbuffer.set_text('')
+        print('Pressed to Delete')
     # Returns List
     
 
     def serial_com(self):
-    	'''Serial communications: get a response'''
+        '''Serial communications: get a response'''
 
     # open serial port
         try:
             serial_port = serial.Serial(com_port, baud_rate)
         except serial.SerialException as e:
             print("could not open serial port '{}': {}".format(com_port, e))
-
-    # read response from serial port
+            
         lines = []
         while True:
             line = serial_port.readline()
@@ -64,9 +62,9 @@ class MyScript():
         # wait for new data after each line
             timeout = time.time() + 0.1
             while not serial_port.inWaiting() and timeout > time.time():
-            	pass
+                pass
             if not serial_port.inWaiting():
-            	break 
+                break 
 
     #close the serial port
         serial_port.close()   
