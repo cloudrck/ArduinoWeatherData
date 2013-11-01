@@ -3,4 +3,4 @@ ArduinoWeatherData
 
 Arduino Script with Python
 
-http://blog.cloudrck.com/node/16
+http://community.cloudrck.com/t/arduino-temperature-sensor-with-python/11/2
